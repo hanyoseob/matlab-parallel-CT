@@ -81,7 +81,7 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
     3. dOffsetImgX, dOffsetImgY `[element; (float, +-)]` : 0, 0
 
 ## Execution Time
-* While Matlab is optimized to calculate the Matrix operation, it is calculated by pixel operation to match the Equation explicitly. 
+* While Matlab is optimized to calculate the Matrix operation, it is calculated by pixel operation to match the Equations explicitly. 
 * Therefore, the execution time is slow as shown a table.
 
 | Operation  | Execution time | Remark |
