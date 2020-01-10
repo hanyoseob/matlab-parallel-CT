@@ -3,7 +3,7 @@
 ### Reference 
 [Computed Tomography: Principles, Design, Artifacts, and Recent Advances, 3rd.](http://bitly.kr/SOw7Yb1s)
 
-    Please read Chapter 3. Image Reconstruction.
+> The beginners, who is unfamiliar about the CT concept and principle, read Chapter 3. Image Reconstruction.
 
 ### Abstract
 X-ray computed tomography (CT) has experienced an explosion of technological development for a quarter century. Six years after the second edition of Computed Tomography, this third edition captures the most recent advances in technology and clinical applications. New to this edition are descriptions of iterative reconstruction, statistical reconstruction, methodologies used to model the CT systems, and the searching methodologies for optimal solutions. A new section on 3D printing introduces approaches by early adopters in the area. Also added is a description and discussion of the size-specific dose estimate, an index that attempts to more accurately reflect the dose absorption of specific-sized patients. The coverage of dual-energy CT has been significantly expanded to include its background, theoretical development, and clinical applications.
@@ -79,3 +79,16 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
     1. dImgX, dImgY `[mm; (float, +)]` : 1, 1
     2. nImgX, nImgY `[element; (int, +)]` : 256, 256
     3. dOffsetImgX, dOffsetImgY `[element; (float, +-)]` : 0, 0
+
+## Execution Time
+* While Matlab is optimized to calculate the Matrix operation, it is calculated by pixel operation to match the Equation explicitly. 
+* Therefore, the execution time is slow as shown a table.
+
+| Operation  | Execution time | Remark |
+| :---------:| :------------: | :----: |
+| Projection | about 1000 sec | *ray-driven* |
+| Filtering | about 0.025 sec | *convolution* |
+|  | about 0.050 sec | *zero-padding + FFT*|
+| Backprojection | about 260 sec | *pixel-driven* |
+
+> To reduce the execution time, Codes of `C/C++ ver.` and/or `Python ver.` code will be published **as soon as possible**.
