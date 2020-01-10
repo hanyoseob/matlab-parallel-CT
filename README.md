@@ -63,8 +63,8 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 * The results were reconstructed by below hyper parameters.
 
 * X-ray CT System parameters
-    1. dAngle `[degree]` : 300 
-    2. nView `[unit]` : 300 
+    1. dAngle `[degree]` : 360 
+    2. nView `[unit]` : 360 
     3. dView `[degree]` : 1
     4. DSO `[mm]` : 400
     5. DSD `[mm]` : 800 
