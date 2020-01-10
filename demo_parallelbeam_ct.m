@@ -29,7 +29,7 @@ param.nDctX         = 400;  % # of elements
 
 param.dOffsetDctX   = 30; 	% # of elements
 
-param.compute_filtering = 'conv';   % method for computing the filtering function : 'conv', 'fft'
+param.compute_filtering = 'fft';   % method for computing the filtering function : 'conv', 'fft'
 
 %% Object parameter
 % dImgY             : Pixel resolution [mm (float)]
