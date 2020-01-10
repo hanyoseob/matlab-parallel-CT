@@ -12,7 +12,7 @@ addpath('./lib');
 % DSO   : Distance from the Source to the Object    [mm]
 % DSD 	: Distance from the Source to the Detector  [mm]
 param.dAngle        = 360;  % degree
-param.nView         = 180; 	% # of unit
+param.nView         = 360; 	% # of unit
 param.dView         = param.dAngle/param.nView;  % degree
 param.pdView        = linspace(0, param.dAngle - param.dAngle/param.nView, param.nView);
 param.DSO           = 400 ; % mm
@@ -27,7 +27,7 @@ param.dDctX         = 0.7;  % mm
 
 param.nDctX         = 400;  % # of elements
 
-param.dOffsetDctX   = 50; 	% # of elements
+param.dOffsetDctX   = 30; 	% # of elements
 
 param.compute_filtering = 'fft';   % method for computing the filtering function : 'conv', 'fft'
 
