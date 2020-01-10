@@ -1,3 +1,6 @@
+% Reference
+% Bilinear Interpolation
+% https://en.wikipedia.org/wiki/Bilinear_interpolation
 function dst  = interpolation1d(src, curid)
 
 preid	= floor(curid);

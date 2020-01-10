@@ -1,6 +1,6 @@
-% Please read the Ch. 3 Image Reconstruction
+% Please read the Ch.3 Image Reconstruction
 
-% Implementation for filtering operator based on Ch. 3 Equation (3.21) & (3.29) & (3.30)
+% Implementation for filtering operator based on Ch.3 Equation (3.21) & (3.29) & (3.30)
 % Filtering operator is implemented by both convolution and FFT versions.
 function [pdFltY, pdFlt] = filtering(pdY, param)
 
