@@ -29,9 +29,9 @@ for iview = 0:param.nView-1
             
             dDistY      = dRadius*cosd(dBeta - dPhi);
             
-            nCurIdDctX    = pos2id(dDistY, param.dDctX, param.nDctX) - param.dOffsetDctX + 1;
+            nCurIdDctX   = pos2id(dDistY, param.dDctX, param.nDctX) - param.dOffsetDctX + 1;
             
-            if (nCurIdDctX <= 1 || nCurIdDctX >= param.nDctX)
+            if (nCurIdDctX < 1 || nCurIdDctX > param.nDctX)
                 continue;
             end
             
