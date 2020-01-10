@@ -10,7 +10,7 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
       
 ## Projection
 * Projection operator is implemented based on Ch.3 Equations (3.5) & (3.6).
-* Ray-driven method is applied to Projection operator.
+* `Ray-driven method` is applied to Projection operator.
 
     * Ch.3 Equation (3.5): `Rotated coordinate` X-ray CT system (`Counterclockwise`).
         * ![eq-t-axis](http://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cbg_white%20%5Cfn_cm%20%5Clarge%20t%20%3D%20x%20%5Ccos%28%5Ctheta%29%20&plus;%20y%20%5Csin%28%5Ctheta%29)
@@ -33,7 +33,7 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 
 ## Backprojection
 * Backprojection operator is implemented based on Ch.3 Equation (3.22).
-* Pixel-driven method is applied to backprojection operator.
+* `Pixel-driven method` is applied to backprojection operator.
 
     * Ch.3 Equation (3.22): `Backprojection`
         * ![eq-backprojection](http://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cbg_white%20%5Cfn_cm%20%5Clarge%20f%28x%2C%20y%29%20%3D%5Cint_%7B0%7D%5E%7B%5Cpi%7Dg%28x%20%5Ccos%28%5Ctheta%29%20&plus;%20y%5Csin%28%5Ctheta%29%29d%5Ctheta)
