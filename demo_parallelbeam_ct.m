@@ -14,7 +14,6 @@ addpath('./lib');
 param.dAngle        = 360;  % degree
 param.nView         = 360; 	% # of unit
 param.dView         = param.dAngle/param.nView;  % degree
-param.pdView        = linspace(0, param.dAngle - param.dAngle/param.nView, param.nView);
 param.DSO           = 400 ; % mm
 param.DSD           = 800;  % mm
 
@@ -45,7 +44,7 @@ param.nImgY         = 256;  % # of elements
 param.nImgX         = 256;  % # of elements
 
 param.dOffsetImgY	= 0;    % # of elements
-param.dOffsetImgX   = 0;    % # of elements
+param.dOffsetImgX   = 0;    % # of elements4
 
 %% Load image
 load('XCAT512.mat');
@@ -59,7 +58,7 @@ tic;
 prj         = projection(input, param);
 toc;
 
-disp ('filtering - implementation of Ch.3 Equation (3.29) & (3.30)');
+disp ('filtering - implementation of Ch.3 Equation (3.28) & (3.29) & (3.30)');
 tic;
 prj_flt  	= filtering(prj, param);
 toc;
