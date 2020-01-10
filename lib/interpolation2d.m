@@ -1,5 +1,12 @@
 
-function dst  = interpolation2d(src, curidy, preidy, postidy, curidx, preidx, postidx)
+function dst  = interpolation2d(src, curidy, curidx)
+
+preidy	= floor(curidy);
+postidy	= preidy + 1;
+
+preidx 	= floor(curidx);
+postidx	= preidx + 1;
+
 prewgty     = postidy - curidy;
 postwgty	= curidy - preidy;
 

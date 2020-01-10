@@ -1,4 +1,8 @@
-function dst  = interpolation1d(src, curid, preid, postid)
+function dst  = interpolation1d(src, curid)
+
+preid	= floor(curid);
+postid	= preid + 1;
+
 prewgt  = postid - curid;
 postwgt	= curid - preid;
 

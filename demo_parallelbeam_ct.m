@@ -5,23 +5,20 @@ close all;
 restoredefaultpath();
 addpath('./lib');
 
-%% Setting the CT System
+%% X-ray CT System parameter
 % dAngle: Measure from 0 until the angle [degree]
 % nView	: # of the views [unit]
 % dView	: Gap between view_(k) - view_(k-1) [degree]
-param.dAngle        = 180;  % degree
-param.nView         = 90; 	% # of unit
-param.dView         = param.dAngle/param.nView;  % degree
-param.pdView        = linspace(0, param.dAngle, param.nView + 1);
-param.pdView(end)   = [];
-
-%% X-ray source
 % DSO   : Distance from the Source to the Object    [mm]
 % DSD 	: Distance from the Source to the Detector  [mm]
+param.dAngle        = 360;  % degree
+param.nView         = 180; 	% # of unit
+param.dView         = param.dAngle/param.nView;  % degree
+param.pdView        = linspace(0, param.dAngle - param.dAngle/param.nView, param.nView);
 param.DSO           = 400 ; % mm
 param.DSD           = 800;  % mm
 
-%% X-ray detector
+%% X-ray detector parameter
 % dDctX             : Detector pitch [mm]
 % nDctX             : Number of detector [element (int)]
 % dOffsetDctX       : Index of shifted detector [element (float)]
@@ -30,11 +27,11 @@ param.dDctX         = 0.7;  % mm
 
 param.nDctX         = 400;  % # of elements
 
-param.dOffsetDctX   = 0; 	% # of elements
+param.dOffsetDctX   = 50; 	% # of elements
 
 param.compute_filtering = 'fft';   % method for computing the filtering function : 'conv', 'fft'
 
-%% Object size
+%% Object parameter
 % dImgY             : Pixel resolution [mm]
 % dImgX             : Pixel resolution [mm]
 % nImgY             : Matrix size of image [element (int)]
@@ -57,17 +54,17 @@ input                 = imresize(XCAT512, [param.nImgY, param.nImgX]);
 %% Run implemented function
 disp ('implementation ver.')
 
-disp ('projection - implementation');
+disp ('projection - implementation of Ch.3 Equation (3.5) & (3.6)');
 tic;
 prj         = projection(input, param);
 toc;
 
-disp ('filtering - implementation');
+disp ('filtering - implementation of Ch.3 Equation (3.29) & (3.30)');
 tic;
 prj_flt  	= filtering(prj, param);
 toc;
 
-disp ('backprojection - implementation');
+disp ('backprojection - implementation of Ch.3 Equation (3.22)');
 tic;
 output   	= backprojection(prj_flt, param);
 toc;

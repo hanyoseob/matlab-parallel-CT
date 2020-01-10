@@ -1,4 +1,4 @@
-% Please read the Ch.3 Image Reconstruction
+% Please read the Ch. 3 Image Reconstruction
 
 % Implementation for backprojection operator based on Ch. 3 Equation (3.22)
 % Backprojection operator is implemented using pixel-driven method
@@ -16,7 +16,7 @@ pdX         = zeros(param.nImgY, param.nImgX, 'like', pdY);
 dCurX       = zeros(param.nImgY, param.nImgX, 'like', pdY);
 
 % Ch. 3 Equation (3.22)
-% Backprojection operator
+% Backproject the
 for iview = 0:param.nView-1
     
     % Rotation angle for geometry
@@ -33,7 +33,7 @@ for iview = 0:param.nView-1
             % Y position of object
             dPosImgY    = id2pos(iimgy + param.dOffsetImgY, param.dImgY, param.nImgY);
             
-            % Calculate a detector position based on Figure 3.34
+            % Calculate a detector postion based on Figure 3.34
             dRadius     = sqrt(dPosImgY*dPosImgY + dPosImgX*dPosImgX);
             dPhi        = atan2d(dPosImgY, dPosImgX);
             
@@ -60,8 +60,5 @@ for iview = 0:param.nView-1
         drawnow();
     end
 end
-
-%%
-pdX = pi/param.nView*pdX;
 
 end
