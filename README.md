@@ -59,7 +59,7 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 
 
 ## Results
-![alt text](./img/reconstruction_image.png "Reconstructed image using parallelbeam")
+![alt text](./img/reconstruction_image.png "Reconstructed image using parallel beam CT")
 * The results were reconstructed by below hyper parameters.
 
 * X-ray CT System parameters
