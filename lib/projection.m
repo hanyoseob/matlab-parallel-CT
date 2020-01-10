@@ -23,7 +23,7 @@ nSample     = ceil(dDiameter/dSample);
 
 pdY         = zeros(param.nDctX, param.nView, 'like', pdX);
 
-% Ch. 3 Equation (3.6)
+% Ch.3 Equation (3.6)
 % Projection operator
 for iview = 0:param.nView-1
     
@@ -55,7 +55,7 @@ for iview = 0:param.nView-1
         dCurY       = 0;
         
         
-        % Ch. 3 Equation (3.6)
+        % Ch.3 Equation (3.6)
         % Line Integration along the s-axis
         for ismp = 0:nSample-1
             

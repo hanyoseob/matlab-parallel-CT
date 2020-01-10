@@ -1,4 +1,6 @@
-
+% Reference
+% Linear Interpolation
+% https://en.wikipedia.org/wiki/Linear_interpolation
 function dst  = interpolation2d(src, curidy, curidx)
 
 preidy	= floor(curidy);

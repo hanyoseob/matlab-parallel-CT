@@ -1,4 +1,5 @@
-
+% Ch.3 Equation (3.29)
+% Generate filter kernel
 function pdFlt = generate_filter(d, n)
 
 pdFlt = zeros(2*n - 1, 1);

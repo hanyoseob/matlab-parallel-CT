@@ -1,6 +1,6 @@
 % Please read the Ch.3 Image Reconstruction
 
-% Implementation for backprojection operator based on Ch. 3 Equation (3.22)
+% Implementation for backprojection operator based on Ch.3 Equation (3.22)
 % Backprojection operator is implemented using pixel-driven method
 function pdX = backprojection(pdY, param, bfig)
 
@@ -15,7 +15,7 @@ end
 pdX         = zeros(param.nImgY, param.nImgX, 'like', pdY);
 dCurX       = zeros(param.nImgY, param.nImgX, 'like', pdY);
 
-% Ch. 3 Equation (3.22)
+% Ch.3 Equation (3.22)
 % Backprojection operator
 for iview = 0:param.nView-1
     

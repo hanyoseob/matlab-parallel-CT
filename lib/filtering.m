@@ -1,6 +1,10 @@
-% Please read the Ch. 3 Image Reconstruction
+% Please read the Ch.3 Image Reconstruction
 
+<<<<<<< HEAD
 % Implementation for filtering operator based on Ch. 3 Equation (3.28) & (3.29) & (3.30)
+=======
+% Implementation for filtering operator based on Ch.3 Equation (3.21) & (3.29) & (3.30)
+>>>>>>> 206e95ca49e73ad10a88f9d5bfb7f4c016b5c83c
 % Filtering operator is implemented by both convolution and FFT versions.
 function [pdFltY, pdFlt] = filtering(pdY, param)
 
@@ -18,7 +22,7 @@ switch param.compute_filtering
         end
         
     case 'fft'
-        % Ch.3 Equation (3.28)
+        % Ch.3 Equation (3.21)
         % FFT ver.
         pdFltY_         = zeros(param.nDctX, 1);
         
