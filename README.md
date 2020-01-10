@@ -40,22 +40,22 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
         
 ## Parameters
 * X-ray CT System parameters
-    1. dAngle `[degree]` : Rotational range of X-ray source 
-    2. nView `[unit]` : The number of views 
-    3. dView `[degree]` : The step of views
-    4. DSO `[mm]` : Distance from Source to Object
-    5. DSD `[mm]` : Distance from Source to Detector 
+    1. dAngle `[degree; (float, +)]` : Rotational range of X-ray source 
+    2. nView `[element; (int, +)]` : The number of views 
+    3. dView `[degree; (float, +)]` : The step of views
+    4. DSO `[mm; (float, +)]` : Distance from Source to Object
+    5. DSD `[mm; (float, +)]` : Distance from Source to Detector 
 
 * X-ray detector parameters
-    1. dDctX `[mm]` : Detector pitch
-    2. nDctX `[unit]` : The number of detectors
-    3. dOffsetDctX `[float]` : Index of shifted detectors (+, -)
-    4. compute_filtering `[convolution, fft]` : Filtering method
+    1. dDctX `[mm; (float, +)]` : Detector pitch
+    2. nDctX `[element; (int, +)]` : The number of detectors
+    3. dOffsetDctX `[float; (float, +-)]` : Index of shifted detectors
+    4. compute_filtering `['convolution', 'fft'; (string)]` : Filtering method
     
 * Object parameters 
-    1. dImgX, dImgY `[mm]` : Pixel resolutions
-    2. nImgX, nImgY `[unit]` : The number of pixels
-    3. dOffsetImgX, dOffsetImgY `[float]` : Index of shifted image (+, -)
+    1. dImgX, dImgY `[mm; (float, +)]` : Pixel resolutions
+    2. nImgX, nImgY `[element; (int, +)]` : The number of pixels
+    3. dOffsetImgX, dOffsetImgY `[element; (float, +-)]` : Index of shifted image
 
 
 ## Results
@@ -63,19 +63,19 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 * The results were reconstructed by below hyper parameters.
 
 * X-ray CT System parameters
-    1. dAngle `[degree]` : 360 
-    2. nView `[unit]` : 360 
-    3. dView `[degree]` : 1
-    4. DSO `[mm]` : 400
-    5. DSD `[mm]` : 800 
+    1. dAngle `[degree; (float, +)]` : 360 
+    2. nView `[element; (int, +)]` : 360 
+    3. dView `[degree; (float, +)]` : 1
+    4. DSO `[mm; (float, +)]` : 400
+    5. DSD `[mm; (float, +)]` : 800 
 
 * X-ray detector parameters
-    1. dDctX `[mm]` : 0.7
-    2. nDctX `[unit]` : 400
-    3. dOffsetDctX `[float]` : 30
-    4. compute_filtering `[convolution, fft]` : 'fft'
+    1. dDctX `[mm; (float, +)]` : 0.7
+    2. nDctX `[element; (int, +)]` : 400
+    3. dOffsetDctX `[element; (int, +-)]` : 30
+    4. compute_filtering `['convolution', 'fft'; (string)]` : 'fft'
     
 * Object parameters 
-    1. dImgX, dImgY `[mm]` : 1, 1
-    2. nImgX, nImgY `[unit]` : 256, 256
-    3. dOffsetImgX, dOffsetImgY `[float]` : 0, 0
+    1. dImgX, dImgY `[mm; (float, +)]` : 1, 1
+    2. nImgX, nImgY `[element; (int, +)]` : 256, 256
+    3. dOffsetImgX, dOffsetImgY `[element; (float, +-)]` : 0, 0

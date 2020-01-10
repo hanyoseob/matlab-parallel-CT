@@ -56,6 +56,7 @@ for iview = 0:param.nView-1
     
     if bfig
         imagesc(pdX);   title([num2str(iview + 1) ' / ' num2str(param.nView)]);
+        axis image;
         xlabel('x-axis'); ylable('y-axis');
         drawnow();
     end

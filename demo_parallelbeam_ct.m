@@ -4,13 +4,14 @@ close all;
 %%
 restoredefaultpath();
 addpath('./lib');
+addpath('./util');
 
 %% X-ray CT System parameter
-% dAngle: Measure from 0 until the angle [degree]
-% nView	: # of the views [unit]
-% dView	: Gap between view_(k) - view_(k-1) [degree]
-% DSO   : Distance from the Source to the Object    [mm]
-% DSD 	: Distance from the Source to the Detector  [mm]
+% dAngle: Measure from 0 until the angle [degree (float)]
+% nView	: # of the views [element (uint)]
+% dView	: Gap between view_(k) - view_(k-1) [degree (float)]
+% DSO   : Distance from the Source to the Object    [mm (float)]
+% DSD 	: Distance from the Source to the Detector  [mm (float)]
 param.dAngle        = 360;  % degree
 param.nView         = 360; 	% # of unit
 param.dView         = param.dAngle/param.nView;  % degree
@@ -18,25 +19,25 @@ param.DSO           = 400 ; % mm
 param.DSD           = 800;  % mm
 
 %% X-ray detector parameter
-% dDctX             : Detector pitch [mm]
-% nDctX             : Number of detector [element (int)]
-% dOffsetDctX       : Index of shifted detector [element (float)]
-% compute_filtering	: Filtering method, choise=['conv', 'fft']
+% dDctX             : Detector pitch [mm (float)]
+% nDctX             : Number of detector [element (uint)]
+% dOffsetDctX       : Index of shifted detector [element (float; +, -)]
+% compute_filtering	: Filtering method, choise=['conv', 'fft' (string)]
 param.dDctX         = 0.7;  % mm
 
 param.nDctX         = 400;  % # of elements
 
 param.dOffsetDctX   = 30; 	% # of elements
 
-param.compute_filtering = 'fft';   % method for computing the filtering function : 'conv', 'fft'
+param.compute_filtering = 'conv';   % method for computing the filtering function : 'conv', 'fft'
 
 %% Object parameter
-% dImgY             : Pixel resolution [mm]
-% dImgX             : Pixel resolution [mm]
-% nImgY             : Matrix size of image [element (int)]
-% nImgX             : Matrix size of image [element (int)]
-% dOffsetImgY       : Index of shifted image [element (float)]
-% dOffsetImgX       : Index of shifted image [element (float)]
+% dImgY             : Pixel resolution [mm (float)]
+% dImgX             : Pixel resolution [mm (float)]
+% nImgY             : Matrix size of image [element (uint)]
+% nImgX             : Matrix size of image [element (uint)]
+% dOffsetImgY       : Index of shifted image [element (float; +, -)]
+% dOffsetImgX       : Index of shifted image [element (float; +, -)]
 param.dImgY         = 1;    % mm
 param.dImgX         = 1;    % mm
 
@@ -44,7 +45,7 @@ param.nImgY         = 256;  % # of elements
 param.nImgX         = 256;  % # of elements
 
 param.dOffsetImgY	= 0;    % # of elements
-param.dOffsetImgX   = 0;    % # of elements4
+param.dOffsetImgX   = 0;    % # of elements
 
 %% Load image
 load('XCAT512.mat');
@@ -58,7 +59,7 @@ tic;
 prj         = projection(input, param);
 toc;
 
-disp ('filtering - implementation of Ch.3 Equation (3.28) & (3.29) & (3.30)');
+disp ('filtering - implementation of Ch.3 Equation (3.21) & (3.29) & (3.30)');
 tic;
 prj_flt  	= filtering(prj, param);
 toc;

@@ -78,6 +78,7 @@ for iview = 0:param.nView-1
     
     if bfig
         imagesc(pdY);   title([num2str(iview + 1) ' / ' num2str(param.nView)]);
+        axis image;
         xlabel('angle'); ylable('detector');
         drawnow();
     end
