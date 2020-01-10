@@ -53,7 +53,7 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
     4. compute_filtering `[convolution, fft]` : Filtering method
     
 * Object parameters 
-    1. dImgX, dImgY `[mm]` : Pixel resolution
+    1. dImgX, dImgY `[mm]` : Pixel resolutions
     2. nImgX, nImgY `[unit]` : The number of pixels
     3. dOffsetImgX, dOffsetImgY `[float]` : Index of shifted image (+, -)
 
