@@ -60,7 +60,7 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 
 ## Results
 ![alt text](./img/reconstruction_image.png "Reconstructed image using parallel beam CT")
-* The results were reconstructed by below hyper parameters.
+* The results were reconstructed by hyper parameters below.
 
 * X-ray CT System parameters
     1. dAngle `[degree; (float, +)]` : 360 
@@ -82,13 +82,13 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 
 ## Execution Time
 * While Matlab is optimized to calculate the Matrix operation, it is calculated by pixel operation to match the Equations explicitly. 
-* Therefore, the execution time is slow as shown a table.
+* Therefore, the execution time is slow as shown in a table below.
 
 | Operation  | Execution time | Remark |
 | :---------:| :------------: | :----: |
 | Projection | about 1000 sec | *ray-driven* |
-| Filtering | about 0.025 sec | *convolution* |
-|  | about 0.050 sec | *zero-padding + FFT*|
+| (a) Filtering | about 0.025 sec | *convolution* |
+| (b) Filtering | about 0.050 sec | *zero-padding + FFT*|
 | Backprojection | about 260 sec | *pixel-driven* |
 
 > To reduce the execution time, Codes of `C/C++ ver.` and/or `Python ver.` code will be published **as soon as possible**.
