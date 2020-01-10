@@ -42,7 +42,7 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 * X-ray CT System parameters
     1. dAngle `[degree; (float, +)]` : Rotational range of X-ray source 
     2. nView `[element; (int, +)]` : The number of views 
-    3. dView `[degree; (float, +)]` : The step of views
+    3. dView `[degree; (float, +)]` : The step of view
     4. DSO `[mm; (float, +)]` : Distance from Source to Object
     5. DSD `[mm; (float, +)]` : Distance from Source to Detector 
 
