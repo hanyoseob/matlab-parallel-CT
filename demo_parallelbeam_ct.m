@@ -10,7 +10,7 @@ addpath('./lib');
 % nView	: # of the views [unit]
 % dView	: Gap between view_(k) - view_(k-1) [degree]
 param.dAngle        = 180;  % degree
-param.nView         = 180; 	% # of unit
+param.nView         = 90; 	% # of unit
 param.dView         = param.dAngle/param.nView;  % degree
 param.pdView        = linspace(0, param.dAngle, param.nView + 1);
 param.pdView(end)   = [];

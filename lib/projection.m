@@ -11,17 +11,17 @@ end
 dSizeImgX   = param.nImgX*param.dImgX;
 dSizeImgY   = param.nImgY*param.dImgY;
 
-dDiameter   = sqrt(dSizeImgX*dSizeImgX + dSizeImgY*dSizeImgY);
+dDiameter   = sqrt(dSizeImgY*dSizeImgY + dSizeImgX*dSizeImgX);
 dRadius     = 0.5*dDiameter;
 
-dSample     = min(param.dImgX, param.dImgY);
+dSample     = min(param.dImgY, param.dImgX);
 nSample     = ceil(dDiameter/dSample);
 
 pdY         = zeros(param.nDctX, param.nView, 'like', pdX);
 
 for iview = 0:param.nView-1
     
-    dBeta   = -iview*param.dView;
+    dBeta   = iview*param.dView;
     
     for idctx = 0:param.nDctX-1
         
@@ -30,15 +30,15 @@ for iview = 0:param.nView-1
         
         dGamma      = 0;
         
-        dOriNorDirY = dSample*cosd(dGamma);
         dOriNorDirX	= dSample*sind(dGamma);
+        dOriNorDirY = dSample*cosd(dGamma);
         
-        dNorDirX	= cosd(dBeta)*dOriNorDirX - sind(dBeta)*dOriNorDirY;
-        dNorDirY	= sind(dBeta)*dOriNorDirX + cosd(dBeta)*dOriNorDirY;
+        dNorDirX	= cosd(dBeta)*dOriNorDirX + sind(dBeta)*dOriNorDirY;
+        dNorDirY	= -sind(dBeta)*dOriNorDirX + cosd(dBeta)*dOriNorDirY;
         
-        dPosImgX    = cosd(dBeta)*dOriImgX - sind(dBeta)*dOriImgY;
-        dPosImgY    = sind(dBeta)*dOriImgX + cosd(dBeta)*dOriImgY;
-        
+        dPosImgX    = cosd(dBeta)*dOriImgX + sind(dBeta)*dOriImgY;
+        dPosImgY    = -sind(dBeta)*dOriImgX + cosd(dBeta)*dOriImgY;
+
         dCurY       = 0;
         
         for ismp = 0:nSample-1
