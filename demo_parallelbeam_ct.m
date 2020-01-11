@@ -47,9 +47,12 @@ param.nImgX         = 256;  % # of elements
 param.dOffsetImgY	= 0;    % # of elements
 param.dOffsetImgX   = 0;    % # of elements
 
+param.datatype      = 'float';
+
 %% Load image
-load('XCAT512.mat');
-input                 = imresize(XCAT512, [param.nImgY, param.nImgX]);
+fid                 = fopen('input512.raw', 'rb');
+input               = imresize(single(fread(fid, [512, 512], 'single')), [param.nImgY, param.nImgX]);
+fclose(fid);
 
 %% Run implemented function
 disp ('implementation ver.')
