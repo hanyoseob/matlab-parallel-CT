@@ -2,7 +2,7 @@
 
 % Implementation for backprojection operator based on Ch.3 Equation (3.22)
 % Backprojection operator is implemented using pixel-driven method
-function pdX = backprojection(pdY, param, bfig)
+function pdOut = backprojection(pdIn, param, bfig)
 
 if nargin < 3
     bfig = false;
@@ -12,8 +12,8 @@ if bfig
     figure('name', 'backprojection'); colormap gray;
 end
 
-pdX         = zeros(param.nImgY, param.nImgX, 'like', pdY);
-dCurX       = zeros(param.nImgY, param.nImgX, 'like', pdY);
+pdOut   = zeros(param.nImgY, param.nImgX, 'like', pdIn);
+pdOut_	= zeros(param.nImgY, param.nImgX, 'like', pdIn);
 
 % Ch.3 Equation (3.22)
 % Backprojection operator
@@ -21,7 +21,7 @@ for iview = 0:param.nView-1
     
     % Rotation angle for geometry
     dBeta       = -iview*param.dView;
-    dCurX(:)	= 0;
+    pdOut_(:)	= 0;
     
     for iimgx = 0:param.nImgX-1
         
@@ -42,27 +42,19 @@ for iview = 0:param.nView-1
             
             nCurIdDctX   = pos2id(dDistX, param.dDctX, param.nDctX) - param.dOffsetDctX + 1;
             
-            if (nCurIdDctX < 1 || nCurIdDctX > param.nDctX)
-                continue;
-            end
+            pdOut_(iimgy + 1, iimgx + 1)	= interpolation1d(pdIn(:, iview + 1), nCurIdDctX, param.nDctX);
             
-            dCurX_      = interpolation1d(pdY(:, iview + 1), nCurIdDctX, param.nDctX);
-            
-            dCurX(iimgy + 1, iimgx + 1) = dCurX_;
         end
     end
     
-    pdX	= pdX + dCurX;
+    pdOut	= pdOut + pi/param.nView*pdOut_;
     
     if bfig
-        imagesc(pdX);   title([num2str(iview + 1) ' / ' num2str(param.nView)]);
+        imagesc(pdOut);   title([num2str(iview + 1) ' / ' num2str(param.nView)]);
         axis image;
         xlabel('x-axis'); ylable('y-axis');
         drawnow();
     end
 end
-
-%%
-pdX = pi/param.nView*pdX;
 
 end

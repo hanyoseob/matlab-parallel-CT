@@ -6,7 +6,7 @@ restoredefaultpath();
 addpath('./lib');
 addpath('./util');
 
-%% X-ray CT System parameter
+%% X-ray CT System parameters
 % dAngle: Measure from 0 until the angle [degree (float)]
 % nView	: # of the views [element (uint)]
 % dView	: Gap between view_(k) - view_(k-1) [degree (float)]
@@ -19,7 +19,7 @@ param.dView         = param.dAngle/param.nView;  % degree
 param.DSO           = 400 ; % mm
 param.DSD           = 800;  % mm
 
-%% X-ray detector parameter
+%% X-ray CT Detector parameters
 % dDctY, dDctX              : Detector pitch [mm (float)]
 % nDctY, nDctX            	: Number of detector [element (uint)]
 % dOffsetDctY, dOffsetDctX  : Index of shifted detector [element (float; +, -)]
@@ -39,7 +39,7 @@ param.dOffsetDctX   = 20;
 
 param.compute_filtering = 'conv';
 
-%% Object parameter
+%% Image Object parameters
 % dImgY, dImgX, dImgZ	: Pixel resolution [mm (float)]
 % nImgY, nImgX, nImgZ	: Matrix size of image [element (uint)]s
 % dOffsetImgY, dOffsetImgX, dOffsetImgZ	: Index of shifted image [element (float; +, -)]

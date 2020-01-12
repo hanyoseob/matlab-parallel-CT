@@ -1,8 +1,8 @@
 % Please read the Ch.3 Image Reconstruction
-
+%
 % Implementation for projection operator based on Ch.3 Equation (3.5) & (3.6)
 % Projection operator is implemented using ray-driven method
-function pdY = projection(pdX, param, bfig)
+function pdOut = projection(pdIn, param, bfig)
 
 if nargin < 3
     bfig = false;
@@ -21,7 +21,7 @@ dRadius     = 0.5*dDiameter;
 dSample     = min(param.dImgY, param.dImgX);
 nSample     = ceil(dDiameter/dSample);
 
-pdY         = zeros(param.nDctX, param.nView, 'like', pdX);
+pdOut       = zeros(param.nDctX, param.nView, 'like', pdIn);
 
 % Ch.3 Equation (3.6)
 % Projection operator
@@ -33,47 +33,45 @@ for iview = 0:param.nView-1
     for idctx = 0:param.nDctX-1
         
         % Initial X-ray source position [mm, mm]
-        dOriImgX       = id2pos(idctx + param.dOffsetDctX, param.dDctX, param.nDctX);
         dOriImgY       = -dRadius;
+        dOriImgX       = id2pos(idctx + param.dOffsetDctX, param.dDctX, param.nDctX);
         
         dGamma      = 0;
         
-        % Normal vector of incident X-ray [mm, mm] 
-        dOriNorDirX	= dSample*sind(dGamma);
+        % Normal vector of incident X-ray [mm, mm]
         dOriNorDirY = dSample*cosd(dGamma);
+        dOriNorDirX	= dSample*sind(dGamma);
         
         % Ch.3 Equation (3.5)
         % Rotated X-ray source position [mm, mm]
-        dPosImgX    = cosd(dBeta)*dOriImgX + sind(dBeta)*dOriImgY;
         dPosImgY    = -sind(dBeta)*dOriImgX + cosd(dBeta)*dOriImgY;
+        dPosImgX    = cosd(dBeta)*dOriImgX + sind(dBeta)*dOriImgY;
         
         % Ch.3 Equation (3.5)
         % Rotated normal vector of incident X-ray [mm, mm]
-        dNorDirX	= cosd(dBeta)*dOriNorDirX + sind(dBeta)*dOriNorDirY;
         dNorDirY	= -sind(dBeta)*dOriNorDirX + cosd(dBeta)*dOriNorDirY;
+        dNorDirX	= cosd(dBeta)*dOriNorDirX + sind(dBeta)*dOriNorDirY;
         
-        dCurY       = 0;
-        
+        pdOut_	= 0;
         
         % Ch.3 Equation (3.6)
         % Line Integration along the s-axis
         for ismp = 0:nSample-1
             
             % Sampleing position via X-ray penetrated along Object
-            dCurIdImgX  = pos2id(dPosImgX + ismp*dNorDirX, param.dImgX, param.nImgX) - param.dOffsetImgX + 1;
             dCurIdImgY	= pos2id(dPosImgY + ismp*dNorDirY, param.dImgY, param.nImgY) - param.dOffsetImgY + 1;
+            dCurIdImgX  = pos2id(dPosImgX + ismp*dNorDirX, param.dImgX, param.nImgX) - param.dOffsetImgX + 1;
             
-            % 2D interpolation 
-            dCurY_      = interpolation2d(pdX, [dCurIdImgY, dCurIdImgX], [param.nImgY, param.nImgX]);
-            dCurY       = dCurY + dCurY_;
+            % 2D interpolation
+            pdOut_	= pdOut_ + interpolation2d(pdIn, [dCurIdImgY, dCurIdImgX], [param.nImgY, param.nImgX]);
         end
         
-        pdY(idctx + 1, iview + 1) = dSample*dCurY;
+        pdOut(idctx + 1, iview + 1) = dSample*pdOut_;
         
     end
     
     if bfig
-        imagesc(pdY);   title([num2str(iview + 1) ' / ' num2str(param.nView)]);
+        imagesc(pdOut);   title([num2str(iview + 1) ' / ' num2str(param.nView)]);
         axis image;
         xlabel('angle'); ylable('detector');
         drawnow();
