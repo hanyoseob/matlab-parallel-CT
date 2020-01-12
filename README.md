@@ -89,6 +89,6 @@ X-ray computed tomography (CT) has experienced an explosion of technological dev
 | Projection | about 1000 sec | *ray-driven* |
 | (a) Filtering | about 0.025 sec | *convolution* |
 | (b) Filtering | about 0.050 sec | *zero-padding + FFT*|
-| Backprojection | about 260 sec | *pixel-driven* |
+| Backprojection | about 300 sec | *pixel-driven* |
 
 > To reduce the execution time, Codes of `C/C++ ver.` and/or `Python ver.` code will be published **as soon as possible**.
