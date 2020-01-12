@@ -37,7 +37,7 @@ param.nDctX         = 400;
 param.dOffsetDctY   = [];
 param.dOffsetDctX   = 20;
 
-param.compute_filtering = 'conv';
+param.compute_filtering = 'fft';
 
 %% Image Object parameters
 % dImgY, dImgX, dImgZ	: Pixel resolution [mm; (float)]
