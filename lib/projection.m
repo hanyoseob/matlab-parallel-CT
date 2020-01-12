@@ -63,16 +63,12 @@ for iview = 0:param.nView-1
             dCurIdImgX  = pos2id(dPosImgX + ismp*dNorDirX, param.dImgX, param.nImgX) - param.dOffsetImgX + 1;
             dCurIdImgY	= pos2id(dPosImgY + ismp*dNorDirY, param.dImgY, param.nImgY) - param.dOffsetImgY + 1;
             
-            if (dCurIdImgX <= 1 || dCurIdImgY <= 1 || dCurIdImgX >= param.nImgX || dCurIdImgY >= param.nImgY)
-                continue;
-            end
-            
             % 2D interpolation 
-            dCurY_      = interpolation2d(pdX, dCurIdImgY, dCurIdImgX);
+            dCurY_      = interpolation2d(pdX, [dCurIdImgY, dCurIdImgX], [param.nImgY, param.nImgX]);
             dCurY       = dCurY + dCurY_;
         end
         
-        pdY(idctx + 1, iview + 1) = dCurY;
+        pdY(idctx + 1, iview + 1) = dSample*dCurY;
         
     end
     
@@ -83,8 +79,5 @@ for iview = 0:param.nView-1
         drawnow();
     end
 end
-
-%%
-pdY = dSample*pdY;
 
 end

@@ -12,6 +12,7 @@ addpath('./util');
 % dView	: Gap between view_(k) - view_(k-1) [degree (float)]
 % DSO   : Distance from the Source to the Object    [mm (float)]
 % DSD 	: Distance from the Source to the Detector  [mm (float)]
+
 param.dAngle        = 360;  % degree
 param.nView         = 360; 	% # of unit
 param.dView         = param.dAngle/param.nView;  % degree
@@ -19,39 +20,48 @@ param.DSO           = 400 ; % mm
 param.DSD           = 800;  % mm
 
 %% X-ray detector parameter
-% dDctX             : Detector pitch [mm (float)]
-% nDctX             : Number of detector [element (uint)]
-% dOffsetDctX       : Index of shifted detector [element (float; +, -)]
-% compute_filtering	: Filtering method, choise=['conv', 'fft' (string)]
-param.dDctX         = 0.7;  % mm
+% dDctY, dDctX              : Detector pitch [mm (float)]
+% nDctY, nDctX            	: Number of detector [element (uint)]
+% dOffsetDctY, dOffsetDctX  : Index of shifted detector [element (float; +, -)]
+% compute_filtering         : Filtering method, choise=['conv', 'fft' (string)]
+%--------------------------------------------------
+% '*DctY' parameters are only used when 3D CT system. 
+%--------------------------------------------------
 
-param.nDctX         = 400;  % # of elements
+param.dDctY         = [];
+param.dDctX         = 0.7;
 
-param.dOffsetDctX   = 30; 	% # of elements
+param.nDctY         = [];
+param.nDctX         = 400;
 
-param.compute_filtering = 'fft';   % method for computing the filtering function : 'conv', 'fft'
+param.dOffsetDctY   = [];
+param.dOffsetDctX   = 20;
+
+param.compute_filtering = 'conv';
 
 %% Object parameter
-% dImgY             : Pixel resolution [mm (float)]
-% dImgX             : Pixel resolution [mm (float)]
-% nImgY             : Matrix size of image [element (uint)]
-% nImgX             : Matrix size of image [element (uint)]
-% dOffsetImgY       : Index of shifted image [element (float; +, -)]
-% dOffsetImgX       : Index of shifted image [element (float; +, -)]
-param.dImgY         = 1;    % mm
-param.dImgX         = 1;    % mm
+% dImgY, dImgX, dImgZ	: Pixel resolution [mm (float)]
+% nImgY, nImgX, nImgZ	: Matrix size of image [element (uint)]s
+% dOffsetImgY, dOffsetImgX, dOffsetImgZ	: Index of shifted image [element (float; +, -)]
+%--------------------------------------------------
+% '*ImgZ' parameters are only used when 3D CT system. 
+%--------------------------------------------------
 
-param.nImgY         = 256;  % # of elements
-param.nImgX         = 256;  % # of elements
+param.dImgY         = 1;
+param.dImgX         = 1;
+param.dImgZ         = [];
 
-param.dOffsetImgY	= 0;    % # of elements
-param.dOffsetImgX   = 0;    % # of elements
+param.nImgY         = 256;
+param.nImgX         = 256;
+param.nImgZ         = [];
 
-param.datatype      = 'float';
+param.dOffsetImgY	= 0;
+param.dOffsetImgX   = 0;
+param.dOffsetImgZ   = [];
 
 %% Load image
-fid                 = fopen('input512.raw', 'rb');
-input               = imresize(single(fread(fid, [512, 512], 'single')), [param.nImgY, param.nImgX]);
+fid                 = fopen(num2str(param.nImgY, 'input%d.raw'), 'rb');
+input               = single(fread(fid, [param.nImgY, param.nImgX], 'single'));
 fclose(fid);
 
 %% Run implemented function

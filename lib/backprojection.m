@@ -46,7 +46,7 @@ for iview = 0:param.nView-1
                 continue;
             end
             
-            dCurX_      = interpolation1d(pdY(:, iview + 1), nCurIdDctX);
+            dCurX_      = interpolation1d(pdY(:, iview + 1), nCurIdDctX, param.nDctX);
             
             dCurX(iimgy + 1, iimgx + 1) = dCurX_;
         end
